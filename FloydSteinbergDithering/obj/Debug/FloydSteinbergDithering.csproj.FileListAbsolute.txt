@@ -1,0 +1,15 @@
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\bin\Debug\FloydSteinbergDithering.exe.config
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\bin\Debug\FloydSteinbergDithering.exe
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\bin\Debug\FloydSteinbergDithering.pdb
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering.csprojAssemblyReference.cache
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\MainWindow.g.cs
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\App.g.cs
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering_MarkupCompile.cache
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering_MarkupCompile.lref
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\MainWindow.baml
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering.g.resources
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering.Properties.Resources.resources
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering.csproj.GenerateResource.cache
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering.csproj.CoreCompileInputs.cache
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering.exe
+C:\Users\Mycomp\source\repos\FloydSteinbergDithering\FloydSteinbergDithering\obj\Debug\FloydSteinbergDithering.pdb

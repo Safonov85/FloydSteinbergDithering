@@ -1,0 +1,18 @@
+﻿<Window x:Class="FloydSteinbergDithering.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FloydSteinbergDithering"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="589.336" Width="911.901">
+    <Grid x:Name="MainGrid" Background="Gainsboro" DragEnter="MainGrid_DragEnter" AllowDrop="True" Drop="MainGrid_Drop">
+        <Image x:Name="ImageLeft" HorizontalAlignment="Left" Height="400" Margin="19,72,0,0" VerticalAlignment="Top" Width="400" MouseLeftButtonDown="ImageLeft_MouseLeftButtonDown">
+            <Image.Effect>
+                <DropShadowEffect Opacity="0"/>
+            </Image.Effect>
+        </Image>
+        <Image x:Name="ImageRight" HorizontalAlignment="Left" Height="400" Margin="468,72,0,0" VerticalAlignment="Top" Width="400"/>
+
+    </Grid>
+</Window>

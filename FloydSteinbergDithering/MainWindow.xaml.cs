@@ -51,6 +51,8 @@ namespace FloydSteinbergDithering
 
             ImageLeft.Source = bitmap;
 
+            //bitmap = (BitmapImage)Invert(bitmap);
+
             ChangePicture();
             
         }
@@ -58,11 +60,13 @@ namespace FloydSteinbergDithering
         void ChangePicture()
         {
             DrawingVisual drawVis = new DrawingVisual();
+            
             using (DrawingContext dc = drawVis.RenderOpen())
             {
                 dc.DrawImage(bitmap, new Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight));
                 dc.DrawLine(new Pen(Brushes.Red, 2), new Point(0, 0), new Point(bitmap.Width, bitmap.Height));
                 dc.DrawRectangle(Brushes.Green, null, new Rect(20, 20, 150, 100));
+                
             }
 
             RenderTargetBitmap rtb = new RenderTargetBitmap(bitmap.PixelWidth, bitmap.PixelHeight, 96, 96, PixelFormats.Pbgra32);
@@ -71,6 +75,59 @@ namespace FloydSteinbergDithering
 
             ImageRight.Source = rtb;
         }
-        
+
+        public void InvertPicture()
+        {
+            DrawingVisual drawVis = new DrawingVisual();
+
+            using (DrawingContext dc = drawVis.RenderOpen())
+            {
+                dc.DrawImage(bitmap, new Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight));
+
+                //foreach (var item in pixelValue)
+                //{
+                //    if (item.Value.Green > item.Value.Red && item.Value.Green > item.Value.Blue
+                //        && item.Value.Blue < strengh && item.Value.Red < strengh)
+                //    {
+                //        dc.DrawRectangle(Brushes.Red, null,
+                //            new Rect(new Point(item.Key.PixelPositionX, item.Key.PixelPositionY),
+                //                     new Point(item.Key.PixelPositionX + 1, item.Key.PixelPositionY + 1)));
+                //    }
+                //}
+            }
+
+            RenderTargetBitmap targetBitmap = new RenderTargetBitmap(bitmap.PixelWidth, bitmap.PixelHeight, 96, 96, PixelFormats.Pbgra32);
+            targetBitmap.Render(drawVis);
+
+            ImageRight.Source = targetBitmap;
+        }
+
+        public BitmapSource Invert(BitmapSource source)
+        {
+            // Calculate stride of source
+            int stride = (source.PixelWidth * source.Format.BitsPerPixel + 7) / 8;
+
+            // Create data array to hold source pixel data
+            int length = stride * source.PixelHeight;
+            byte[] data = new byte[length];
+
+            // Copy source image pixels to the data array
+            source.CopyPixels(data, stride, 0);
+
+            // Change this loop for other formats
+            for (int i = 0; i < length; i += 4)
+            {
+                data[i] = (byte)(255 - data[i]); //R
+                data[i + 1] = (byte)(255 - data[i + 1]); //G
+                data[i + 2] = (byte)(255 - data[i + 2]); //B
+                                                         //data[i + 3] = (byte)(255 - data[i + 3]); //A
+            }
+
+            // Create a new BitmapSource from the inverted pixel buffer
+            return BitmapSource.Create(
+                source.PixelWidth, source.PixelHeight,
+                source.DpiX, source.DpiY, source.Format,
+                null, data, stride);
+        }
     }
 }

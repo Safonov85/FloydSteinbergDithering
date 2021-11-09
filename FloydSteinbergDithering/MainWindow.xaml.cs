@@ -59,47 +59,7 @@ namespace FloydSteinbergDithering
 
         void ChangePicture()
         {
-            DrawingVisual drawVis = new DrawingVisual();
-            
-            using (DrawingContext dc = drawVis.RenderOpen())
-            {
-                dc.DrawImage(bitmap, new Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight));
-                dc.DrawLine(new Pen(Brushes.Red, 2), new Point(0, 0), new Point(bitmap.Width, bitmap.Height));
-                dc.DrawRectangle(Brushes.Green, null, new Rect(20, 20, 150, 100));
-                
-            }
-
-            RenderTargetBitmap rtb = new RenderTargetBitmap(bitmap.PixelWidth, bitmap.PixelHeight, 96, 96, PixelFormats.Pbgra32);
-            rtb.Render(drawVis);
-
-
-            ImageRight.Source = rtb;
-        }
-
-        public void InvertPicture()
-        {
-            DrawingVisual drawVis = new DrawingVisual();
-
-            using (DrawingContext dc = drawVis.RenderOpen())
-            {
-                dc.DrawImage(bitmap, new Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight));
-
-                //foreach (var item in pixelValue)
-                //{
-                //    if (item.Value.Green > item.Value.Red && item.Value.Green > item.Value.Blue
-                //        && item.Value.Blue < strengh && item.Value.Red < strengh)
-                //    {
-                //        dc.DrawRectangle(Brushes.Red, null,
-                //            new Rect(new Point(item.Key.PixelPositionX, item.Key.PixelPositionY),
-                //                     new Point(item.Key.PixelPositionX + 1, item.Key.PixelPositionY + 1)));
-                //    }
-                //}
-            }
-
-            RenderTargetBitmap targetBitmap = new RenderTargetBitmap(bitmap.PixelWidth, bitmap.PixelHeight, 96, 96, PixelFormats.Pbgra32);
-            targetBitmap.Render(drawVis);
-
-            ImageRight.Source = targetBitmap;
+            ImageRight.Source = Invert((BitmapSource)ImageLeft.Source);
         }
 
         public BitmapSource Invert(BitmapSource source)
@@ -128,6 +88,28 @@ namespace FloydSteinbergDithering
                 source.PixelWidth, source.PixelHeight,
                 source.DpiX, source.DpiY, source.Format,
                 null, data, stride);
+        }
+
+        void ChangePictureTEST() // Not Used
+        {
+            DrawingVisual drawVis = new DrawingVisual();
+
+            using (DrawingContext dc = drawVis.RenderOpen())
+            {
+                dc.DrawImage(bitmap, new Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight));
+                dc.DrawLine(new Pen(Brushes.Red, 2), new Point(0, 0), new Point(bitmap.Width, bitmap.Height));
+                dc.DrawRectangle(Brushes.Green, null, new Rect(20, 20, 150, 100));
+
+            }
+
+            RenderTargetBitmap rtb = new RenderTargetBitmap(bitmap.PixelWidth, bitmap.PixelHeight, 96, 96, PixelFormats.Pbgra32);
+            rtb.Render(drawVis);
+
+
+
+            ImageRight.Source = rtb;
+
+            ImageRight.Source = Invert((BitmapSource)ImageRight.Source);
         }
     }
 }

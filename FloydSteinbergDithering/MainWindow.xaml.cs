@@ -59,7 +59,8 @@ namespace FloydSteinbergDithering
 
         void ChangePicture()
         {
-            ImageRight.Source = Invert((BitmapSource)ImageLeft.Source);
+            //ImageRight.Source = Invert((BitmapSource)ImageLeft.Source);
+            ImageRight.Source = MakeGray((BitmapSource)ImageLeft.Source);
         }
 
         public BitmapSource Invert(BitmapSource source)
@@ -80,6 +81,34 @@ namespace FloydSteinbergDithering
                 data[i] = (byte)(255 - data[i]); //R
                 data[i + 1] = (byte)(255 - data[i + 1]); //G
                 data[i + 2] = (byte)(255 - data[i + 2]); //B
+                                                         //data[i + 3] = (byte)(255 - data[i + 3]); //A
+            }
+
+            // Create a new BitmapSource from the inverted pixel buffer
+            return BitmapSource.Create(
+                source.PixelWidth, source.PixelHeight,
+                source.DpiX, source.DpiY, source.Format,
+                null, data, stride);
+        }
+
+        public BitmapSource MakeGray(BitmapSource source)
+        {
+            // Calculate stride of source
+            int stride = (source.PixelWidth * source.Format.BitsPerPixel + 7) / 8;
+
+            // Create data array to hold source pixel data
+            int length = stride * source.PixelHeight;
+            byte[] data = new byte[length];
+
+            // Copy source image pixels to the data array
+            source.CopyPixels(data, stride, 0);
+
+            // MAKES GRAY !!!
+            for (int i = 0; i < length; i += 4)
+            {
+                data[i] = (byte)(data[i+2]); //R
+                data[i + 1] = (byte)(data[i + 2]); //G
+                //data[i + 2] = (byte)(255 - data[i + 2]); //B
                                                          //data[i + 3] = (byte)(255 - data[i + 3]); //A
             }
 
